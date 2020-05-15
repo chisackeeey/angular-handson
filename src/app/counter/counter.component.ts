@@ -16,6 +16,10 @@ export class CounterComponent implements OnInit {
     this.counter = this.counter + 1;
   }
 
+  power() {
+    this.counter = this.counter ** 2;
+  }
+
   constructor() {}
 
   ngOnInit(): void {}
