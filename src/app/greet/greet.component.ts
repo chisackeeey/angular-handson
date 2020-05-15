@@ -6,8 +6,8 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./greet.component.css'],
 })
 export class GreetComponent implements OnInit {
-  @Input() lastName: string;
-  @Input() firstName: string;
+  @Input() lastName = '';
+  @Input() firstName = '';
 
   constructor() {}
 
