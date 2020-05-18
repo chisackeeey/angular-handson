@@ -4,8 +4,8 @@ import { HelloComponent } from './hello/hello.component';
 import { CounterComponent } from './counter/counter.component';
 
 const routes: Routes = [
-  { path: '/hello', component: HelloComponent },
-  { path: '/counter', component: CounterComponent },
+  { path: 'hello', component: HelloComponent },
+  { path: 'counter', component: CounterComponent },
 ];
 
 @NgModule({
