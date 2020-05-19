@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from './../translate.service';
 
 @Component({
   selector: 'app-translate',
@@ -7,10 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TranslateComponent implements OnInit {
   onClick(word: string) {
-    alert(word);
+    this.translateService.translate(word).subscribe((result) => alert(result));
   }
 
-  constructor() {}
+  constructor(private translateService: TranslateService) {}
 
   ngOnInit(): void {}
 }
