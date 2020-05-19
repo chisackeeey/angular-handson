@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { HelloComponent } from './hello/hello.component';
 import { GreetComponent } from './greet/greet.component';
 import { CounterComponent } from './counter/counter.component';
+import { TranslateComponent } from './translate/translate.component';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { CounterComponent } from './counter/counter.component';
     HelloComponent,
     GreetComponent,
     CounterComponent,
+    TranslateComponent,
   ],
   imports: [BrowserModule],
   providers: [],
