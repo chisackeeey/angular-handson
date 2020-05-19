@@ -7,8 +7,12 @@ import { TranslateService } from './../translate.service';
   styleUrls: ['./translate.component.css'],
 })
 export class TranslateComponent implements OnInit {
+  result = '';
+
   onClick(text: string) {
-    this.translateService.translate(text).subscribe((result) => alert(result));
+    this.translateService
+      .translate(text)
+      .subscribe((result) => (this.result = result));
   }
 
   constructor(private translateService: TranslateService) {}
