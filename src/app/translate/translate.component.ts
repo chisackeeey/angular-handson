@@ -10,22 +10,22 @@ export class TranslateComponent implements OnInit {
   result = '';
   loading = false;
 
-  async onClickTranslate(text: string) {
+  onClickTranslate(text: string) {
     this.loading = true;
-    await this.translateService.translateJaToEn(text).subscribe(
+    this.translateService.translateJaToEn(text).subscribe(
       (result) => (this.result = result),
-      (error) => alert(error.statusText)
+      (error) => alert(error.statusText),
+      () => (this.loading = false)
     );
-    this.loading = false;
   }
 
-  async onClickRetranslate(text: string) {
+  onClickRetranslate(text: string) {
     this.loading = true;
-    await this.translateService.translateEnToJa(text).subscribe(
+    this.translateService.translateEnToJa(text).subscribe(
       (result) => (this.result = result),
-      (error) => alert(error.statusText)
+      (error) => alert(error.statusText),
+      () => (this.loading = false)
     );
-    this.loading = false;
   }
 
   constructor(private translateService: TranslateService) {}
