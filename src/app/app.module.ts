@@ -4,21 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { HelloComponent } from './hello/hello.component';
-import { GreetComponent } from './greet/greet.component';
-import { CounterComponent } from './counter/counter.component';
 import { TranslateComponent } from './translate/translate.component';
-import { TodolistComponent } from './todolist/todolist.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HelloComponent,
-    GreetComponent,
-    CounterComponent,
-    TranslateComponent,
-    TodolistComponent,
-  ],
+  declarations: [TranslateComponent],
   imports: [BrowserModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
