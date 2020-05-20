@@ -1,0 +1,15 @@
+.link {
+  background-color: #ffff;
+  border: solid 1px;
+  border-color: #e70000;
+  border-radius: 2px;
+  color: #e70000;
+  margin: 3px;
+  padding: 8px;
+  text-decoration: none;
+}
+
+.linkActive {
+  background-color: #e70000;
+  color: #ffff;
+}
