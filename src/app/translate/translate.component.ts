@@ -8,11 +8,15 @@ import { TranslateService } from './../translate.service';
 })
 export class TranslateComponent implements OnInit {
   result = '';
+  loading = false;
 
-  onClick(text: string) {
-    this.translateService
-      .translate(text)
-      .subscribe((result) => (this.result = result));
+  async onClick(text: string) {
+    this.loading = true;
+    await this.translateService.translate(text).subscribe(
+      (result) => (this.result = result),
+      (error) => alert(error.statusText)
+    );
+    this.loading = false;
   }
 
   constructor(private translateService: TranslateService) {}
