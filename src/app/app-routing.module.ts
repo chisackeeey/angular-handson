@@ -17,6 +17,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./todolist/todolist.module').then((m) => m.TodolistModule),
   },
+  {
+    path: 'translate',
+    loadChildren: () =>
+      import('./translate/translate.module').then((m) => m.TranslateModule),
+  },
 ];
 
 @NgModule({

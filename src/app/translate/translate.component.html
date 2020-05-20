@@ -1,0 +1,11 @@
+<ng-container *ngIf="loading">Loading...</ng-container>
+<ng-container *ngIf="!loading">
+  <div>
+    <input type="text" #text />
+    <button (click)="onClickTranslate(text.value); text.value = ''">
+      日→英
+    </button>
+    <button (click)="onClickRetranslate(result)">日本語に再翻訳</button>
+    <p>{{ result }}</p>
+  </div>
+</ng-container>
