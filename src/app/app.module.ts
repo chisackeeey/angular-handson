@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { TranslateComponent } from './translate/translate.component';
 
 @NgModule({
-  declarations: [TranslateComponent],
+  declarations: [AppComponent, TranslateComponent],
   imports: [BrowserModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
