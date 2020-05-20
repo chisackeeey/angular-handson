@@ -11,8 +11,14 @@ export class TranslateService {
 
   constructor(private http: HttpClient) {}
 
-  translate(text: string) {
+  translateJaToEn(text: string) {
     return this.http.get(`${this.url}?text=${text}&source=ja&target=en`, {
+      responseType: 'text',
+    });
+  }
+
+  translateEnToJa(text: string) {
+    return this.http.get(`${this.url}?text=${text}&source=en&target=ja`, {
       responseType: 'text',
     });
   }

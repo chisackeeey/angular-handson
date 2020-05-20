@@ -10,9 +10,18 @@ export class TranslateComponent implements OnInit {
   result = '';
   loading = false;
 
-  async onClick(text: string) {
+  async onClickTranslate(text: string) {
     this.loading = true;
-    await this.translateService.translate(text).subscribe(
+    await this.translateService.translateJaToEn(text).subscribe(
+      (result) => (this.result = result),
+      (error) => alert(error.statusText)
+    );
+    this.loading = false;
+  }
+
+  async onClickRetranslate(text: string) {
+    this.loading = true;
+    await this.translateService.translateEnToJa(text).subscribe(
       (result) => (this.result = result),
       (error) => alert(error.statusText)
     );
