@@ -119,6 +119,11 @@
           }
         }
       }
-    }},
-  "defaultProject": "angular-handson"
+    }
+  },
+  "defaultProject": "angular-handson",
+  "cli": {
+    "analytics": "9a92bc91-7105-4b86-9cb8-ab04b6daac66",
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
