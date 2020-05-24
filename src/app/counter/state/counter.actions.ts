@@ -1,14 +1,5 @@
-import { Action } from '@ngrx/store';
+import { createAction } from '@ngrx/store';
 
-export enum CounterActionTypes {
-  LoadCounters = '[Counter] Load Counters',
-  
-  
-}
+export const CountUp = createAction('[Counter]Increment Count');
 
-export class LoadCounters implements Action {
-  readonly type = CounterActionTypes.LoadCounters;
-}
-
-
-export type CounterActions = LoadCounters;
+export const CountDown = createAction('[Counter]Decrement Count');
