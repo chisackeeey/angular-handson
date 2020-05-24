@@ -1,14 +1,16 @@
-import { Action } from '@ngrx/store';
+import { createReducer, on, Action } from '@ngrx/store';
+import { CounterState, initialState } from './index';
+import * as CounterActions from './counter.actions';
 
-export const counterFeatureKey = 'counter';
+export const reducer = createReducer(
+  initialState,
+  on(CounterActions.CountUp, (state) => ({ ...state, count: state.count + 1 })),
+  on(CounterActions.CountDown, (state) => ({
+    ...state,
+    count: state.count - 1,
+  }))
+);
 
-export interface State {}
-
-export const initialState: State = {};
-
-export function reducer(state = initialState, action: Action): State {
-  switch (action.type) {
-    default:
-      return state;
-  }
+export function counterReducer(state: CounterState, action: Action) {
+  return reducer(state, action);
 }
