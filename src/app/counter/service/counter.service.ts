@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import * as CounterActions from './counter/state/counter.actions';
-import { selectCount } from './counter/state';
+import * as CounterActions from '../state/counter.actions';
+import { selectCount } from '../state';
 
 @Injectable({
   providedIn: 'root',
