@@ -1,17 +1,19 @@
-import { ActionReducerMap, MetaReducer } from '@ngrx/store';
-import { environment } from '../../../environments/environment';
-import * as fromCounter from './counter.reducer';
+import { createSelector, createFeatureSelector } from '@ngrx/store';
 
-export const counterFeatureKey = 'counter';
-
-export interface State {
-  [fromCounter.counterFeatureKey]: fromCounter.State;
+export interface CounterState {
+  count: number;
 }
 
-export const reducers: ActionReducerMap<State> = {
-  [fromCounter.counterFeatureKey]: fromCounter.reducer,
+export const initialState: CounterState = {
+  count: 0,
 };
 
-export const metaReducers: MetaReducer<State>[] = !environment.production
-  ? []
-  : [];
+export const counterFeatureName = 'counter';
+
+export const selectCounterFeature = createFeatureSelector<CounterState>(
+  counterFeatureName
+);
+export const selectCount = createSelector(
+  selectCounterFeature,
+  (state) => state.count
+);
