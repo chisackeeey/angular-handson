@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+
+import { CounterService } from '../counter.service';
 
 @Component({
   selector: 'app-counter',
@@ -6,21 +9,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./counter.component.css'],
 })
 export class CounterComponent implements OnInit {
-  counter = 0;
-
-  down() {
-    this.counter = this.counter - 1;
-  }
+  count$: Observable<number>;
 
   up() {
-    this.counter = this.counter + 1;
+    this.service.up();
   }
 
-  power() {
-    this.counter = this.counter ** 2;
+  down() {
+    this.service.down();
   }
 
-  constructor() {}
+  power() {}
+
+  constructor(private service: CounterService) {
+    this.count$ = this.service.getCount();
+  }
 
   ngOnInit(): void {}
 }
