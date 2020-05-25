@@ -4,12 +4,12 @@ import * as CounterActions from './counter.actions';
 
 export const reducer = createReducer(
   initialState,
-  on(CounterActions.CountUp, (state) => ({ ...state, count: state.count + 1 })),
-  on(CounterActions.CountDown, (state) => ({
+  on(CounterActions.countUp, (state) => ({ ...state, count: state.count + 1 })),
+  on(CounterActions.countDown, (state) => ({
     ...state,
     count: state.count - 1,
   })),
-  on(CounterActions.CountPower, (state) => ({
+  on(CounterActions.countPower, (state) => ({
     ...state,
     count: state.count ** 2,
   }))

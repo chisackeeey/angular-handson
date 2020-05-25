@@ -15,14 +15,14 @@ export class CounterService {
   }
 
   up() {
-    return this.store.dispatch(CounterActions.CountUp());
+    return this.store.dispatch(CounterActions.countUp());
   }
 
   down() {
-    return this.store.dispatch(CounterActions.CountDown());
+    return this.store.dispatch(CounterActions.countDown());
   }
 
   power() {
-    return this.store.dispatch(CounterActions.CountPower());
+    return this.store.dispatch(CounterActions.countPower());
   }
 }
