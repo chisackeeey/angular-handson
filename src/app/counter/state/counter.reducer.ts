@@ -8,6 +8,10 @@ export const reducer = createReducer(
   on(CounterActions.CountDown, (state) => ({
     ...state,
     count: state.count - 1,
+  })),
+  on(CounterActions.CountPower, (state) => ({
+    ...state,
+    count: state.count ** 2,
   }))
 );
 

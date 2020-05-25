@@ -21,4 +21,8 @@ export class CounterService {
   down() {
     return this.store.dispatch(CounterActions.CountDown());
   }
+
+  power() {
+    return this.store.dispatch(CounterActions.CountPower());
+  }
 }

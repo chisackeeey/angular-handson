@@ -19,7 +19,9 @@ export class CounterComponent implements OnInit {
     this.service.down();
   }
 
-  power() {}
+  power() {
+    this.service.power();
+  }
 
   constructor(private service: CounterService) {
     this.count$ = this.service.getCount();
