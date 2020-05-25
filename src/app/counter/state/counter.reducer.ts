@@ -1,5 +1,5 @@
 import { createReducer, on, Action } from '@ngrx/store';
-import { CounterState, initialState } from './index';
+import { CounterState, initialState } from './counter.state';
 import * as CounterActions from './counter.actions';
 
 export const reducer = createReducer(
