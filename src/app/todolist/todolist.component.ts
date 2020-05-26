@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { DEFAULT_TODO } from './../mock-todolist';
-import { Todo } from './../todo';
+import { Observable } from 'rxjs';
+import { TodolistService } from './service/todolist.service';
 
 @Component({
   selector: 'app-todolist',
@@ -8,20 +8,19 @@ import { Todo } from './../todo';
   styleUrls: ['./todolist.component.css'],
 })
 export class TodolistComponent implements OnInit {
-  todoList = DEFAULT_TODO;
-
-  toggleComplete(todo: Todo) {
-    todo.done = !todo.done;
-  }
+  todoList$: Observable<[]>;
 
   addTodo(newTodo: string) {
-    this.todoList = [
-      ...this.todoList,
-      { id: this.todoList.length + 1, title: newTodo, done: false },
-    ];
+    this.service.addTodo(newTodo);
   }
 
-  constructor() {}
+  toggleComplete(id: number) {
+    this.service.toggleComplete(id);
+  }
+
+  constructor(private service: TodolistService) {
+    this.todoList$ = this.service.getTodolist();
+  }
 
   ngOnInit(): void {}
 }
