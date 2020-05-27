@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TodolistService } from './service/todolist.service';
-import { Todo } from '../domain/todo';
+import { Todo } from './domain/todo';
 
 @Component({
   selector: 'app-todolist',
