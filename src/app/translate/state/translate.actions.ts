@@ -9,3 +9,8 @@ export const translateEnToJa = createAction(
   '[Translate]English To Japanese',
   props<{ text: string }>()
 );
+
+export const setResult = createAction(
+  '[Translate]Set Result',
+  props<{ result: string }>()
+);
