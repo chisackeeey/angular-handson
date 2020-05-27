@@ -18,9 +18,9 @@ export class TodolistComponent implements OnInit {
     this.service.toggleComplete(id);
   }
 
-  constructor(private service: TodolistService) {
+  constructor(private service: TodolistService) {}
+
+  ngOnInit(): void {
     this.todoList$ = this.service.getTodolist();
   }
-
-  ngOnInit(): void {}
 }
