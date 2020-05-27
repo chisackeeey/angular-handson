@@ -1,9 +1,10 @@
 import { createSelector, createFeatureSelector } from '@ngrx/store';
+import { Todo } from '../domain/todo';
 
 export const todolistFeatureName = 'todolist';
 
 export interface TodolistState {
-  todolist: [];
+  todolist: Todo[];
 }
 
 export const initialState: TodolistState = {
