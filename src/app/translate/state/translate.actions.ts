@@ -14,3 +14,8 @@ export const setResult = createAction(
   '[Translate]Set Result',
   props<{ result: string }>()
 );
+
+export const alertError = createAction(
+  '[Menu]Set Error',
+  props<{ error: {} }>()
+);
