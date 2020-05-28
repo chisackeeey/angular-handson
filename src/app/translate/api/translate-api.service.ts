@@ -9,15 +9,17 @@ export class TranslateApiService {
 
   constructor(private http: HttpClient) {}
 
-  translateJaToEn(text: string): Observable<string> {
-    return this.http.get<string>(
-      `${this.baseUrl}?text=${text}&source=ja&target=en`
-    );
+  translateJaToEn(text: string) {
+    console.log('api' + text);
+    return this.http.get(`${this.baseUrl}?text=${text}&source=ja&target=en`, {
+      responseType: 'text',
+    });
   }
 
-  translateEnToJa(text: string): Observable<string> {
-    return this.http.get<string>(
-      `${this.baseUrl}?text=${text}&source=en&target=ja`
-    );
+  translateEnToJa(text: string) {
+    console.log('api' + text);
+    return this.http.get(`${this.baseUrl}?text=${text}&source=en&target=ja`, {
+      responseType: 'text',
+    });
   }
 }

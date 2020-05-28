@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { map, concatMap } from 'rxjs/operators';
+import { map, catchError, concatMap } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 import { TranslateApiService } from '../api/translate-api.service';
 import * as TranslateActions from './translate.actions';
@@ -14,9 +16,10 @@ export class TranslateEffects {
     this.actions$.pipe(
       ofType(TranslateActions.translateJaToEn),
       concatMap(({ text }) =>
-        this.api
-          .translateJaToEn(text)
-          .pipe(map((result) => TranslateActions.setResult({ result })))
+        this.api.translateJaToEn(text).pipe(
+          map((result) => TranslateActions.setResult({ result })),
+          catchError(this.handleError)
+        )
       )
     )
   );
@@ -25,10 +28,16 @@ export class TranslateEffects {
     this.actions$.pipe(
       ofType(TranslateActions.translateEnToJa),
       concatMap(({ text }) =>
-        this.api
-          .translateJaToEn(text)
-          .pipe(map((result) => TranslateActions.setResult({ result })))
+        this.api.translateEnToJa(text).pipe(
+          map((result) => TranslateActions.setResult({ result })),
+          catchError(this.handleError)
+        )
       )
     )
   );
+
+  private handleError = (error: HttpErrorResponse) => {
+    alert(error.statusText);
+    return of(TranslateActions.alertError({ error }));
+  };
 }
