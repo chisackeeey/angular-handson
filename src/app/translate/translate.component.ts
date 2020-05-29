@@ -17,7 +17,7 @@ export class TranslateComponent implements OnInit {
   }
 
   onClickRetranslate() {
-    let text;
+    let text = '';
     this.result$.subscribe((result: string) => {
       console.log('component' + result + '1');
       text = result;
