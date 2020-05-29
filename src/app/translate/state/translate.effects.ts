@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { map, catchError, concatMap } from 'rxjs/operators';
+import { map, catchError, switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 
 import { TranslateApiService } from '../api/translate-api.service';
@@ -15,7 +15,7 @@ export class TranslateEffects {
   translateJaToEn = createEffect(() =>
     this.actions$.pipe(
       ofType(TranslateActions.translateJaToEn),
-      concatMap(({ text }) =>
+      switchMap(({ text }) =>
         this.api.translateJaToEn(text).pipe(
           map((result) => TranslateActions.setResult({ result })),
           catchError(this.handleError)
@@ -27,7 +27,7 @@ export class TranslateEffects {
   translateEnToJa = createEffect(() =>
     this.actions$.pipe(
       ofType(TranslateActions.translateEnToJa),
-      concatMap(({ text }) =>
+      switchMap(({ text }) =>
         this.api.translateEnToJa(text).pipe(
           map((result) => TranslateActions.setResult({ result })),
           catchError(this.handleError)
