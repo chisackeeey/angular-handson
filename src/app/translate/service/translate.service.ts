@@ -20,11 +20,11 @@ export class TranslateService {
 
   translateJaToEn(text: string) {
     console.log('service' + text);
-    return this.store.dispatch(TranslateActions.translateJaToEn({ text }));
+    this.store.dispatch(TranslateActions.translateJaToEn({ text }));
   }
 
   translateEnToJa(text: string) {
     console.log('service' + text);
-    return this.store.dispatch(TranslateActions.translateEnToJa({ text }));
+    this.store.dispatch(TranslateActions.translateEnToJa({ text }));
   }
 }
