@@ -26,10 +26,10 @@ export class TranslateComponent implements OnInit {
     this.service.translateEnToJa(text);
   }
 
-  constructor(private service: TranslateService) {}
-
-  ngOnInit(): void {
+  constructor(private service: TranslateService) {
     this.result$ = this.service.getResult();
     this.loading$ = this.service.getLoading();
   }
+
+  ngOnInit(): void {}
 }
