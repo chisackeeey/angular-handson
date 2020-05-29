@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { first } from 'rxjs/operators';
 import { TranslateService } from './service/translate.service';
 
 @Component({
@@ -17,13 +18,9 @@ export class TranslateComponent implements OnInit {
   }
 
   onClickRetranslate() {
-    let text = '';
-    this.result$.subscribe((result: string) => {
-      console.log('component' + result + '1');
-      text = result;
-      this.result$ = this.service.getResult();
+    this.result$.pipe(first()).subscribe((result: string) => {
+      this.service.translateEnToJa(result);
     });
-    this.service.translateEnToJa(text);
   }
 
   constructor(private service: TranslateService) {
