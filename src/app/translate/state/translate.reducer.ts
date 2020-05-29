@@ -12,6 +12,9 @@ export const reducer = createReducer(
   }),
   on(TranslateActions.setResult, (state, { result }) => {
     return { ...state, loading: false, result };
+  }),
+  on(TranslateActions.alertError, (state) => {
+    return { ...state, loading: false };
   })
 );
 
