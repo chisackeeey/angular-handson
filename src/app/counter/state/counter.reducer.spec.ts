@@ -7,7 +7,7 @@ const initialState: CounterState = {
 };
 
 describe('countUp', () => {
-  it('should return isLoading true', () => {
+  it('should increment count', () => {
     const initState = initialState;
     const counterAction = CounterActions.countUp;
     const newState = counterReducer(initState, counterAction);
@@ -17,7 +17,7 @@ describe('countUp', () => {
 });
 
 describe('countDown', () => {
-  it('should return isLoading true', () => {
+  it('should decrement count', () => {
     const initState = initialState;
     const counterAction = CounterActions.countDown;
     const newState = counterReducer(initState, counterAction);
@@ -27,7 +27,7 @@ describe('countDown', () => {
 });
 
 describe('countPower', () => {
-  it('should return isLoading true', () => {
+  it('should square count', () => {
     const initState = initialState;
     const counterAction = CounterActions.countPower;
     const newState = counterReducer(initState, counterAction);
