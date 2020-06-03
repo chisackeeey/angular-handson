@@ -15,10 +15,10 @@ export class TodolistService {
   }
 
   addTodo(title: string) {
-    return this.store.dispatch(TodolistActions.addTodo({ title }));
+    this.store.dispatch(TodolistActions.addTodo({ title }));
   }
 
   toggleComplete(id: number) {
-    return this.store.dispatch(TodolistActions.toggleComplete({ id }));
+    this.store.dispatch(TodolistActions.toggleComplete({ id }));
   }
 }
