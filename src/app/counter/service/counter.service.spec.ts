@@ -27,6 +27,13 @@ describe('CounterService', () => {
     });
   });
 
+  it('down() should decrease count', () => {
+    service.down();
+    service.getCount().subscribe((count) => {
+      expect(count).toBe(-1);
+    });
+  });
+
   describe('power() should square count', () => {
     it('if count is initialstate', () => {
       service.power();
