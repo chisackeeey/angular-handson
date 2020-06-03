@@ -1,26 +1,47 @@
 import { TestBed } from '@angular/core/testing';
-import { provideMockStore, MockStore } from '@ngrx/store/testing';
-import { Observable, of } from 'rxjs';
+
+import { StoreModule } from '@ngrx/store';
 
 import { CounterService } from './counter.service';
+import { counterFeatureName } from '../state/counter.state';
+import { counterReducer } from '../state/counter.reducer';
 
-describe('SampleServiceService', () => {
+describe('CounterService', () => {
   let service: CounterService;
-  let mockStore: MockStore<any>;
-  const initialState = {
-    count: 0,
-  };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [CounterService, provideMockStore({ initialState })],
+      providers: [{ provide: CounterService }],
+      imports: [
+        StoreModule.forRoot({}),
+        StoreModule.forFeature(counterFeatureName, counterReducer),
+      ],
     });
     service = TestBed.inject(CounterService);
-    mockStore = TestBed.inject(MockStore);
   });
 
   it('up() should increase count', () => {
-    // service.up();
-    expect(service.getCount()).toEqual(of(1));
+    service.up();
+    service.getCount().subscribe((count) => {
+      expect(count).toBe(1);
+    });
+  });
+
+  describe('power() should square count', () => {
+    it('if count is initialstate', () => {
+      service.power();
+      service.getCount().subscribe((count) => {
+        expect(count).toBe(0);
+      });
+    });
+
+    it('if count is not initialstate', () => {
+      service.up();
+      service.up();
+      service.power();
+      service.getCount().subscribe((count) => {
+        expect(count).toBe(4);
+      });
+    });
   });
 });
