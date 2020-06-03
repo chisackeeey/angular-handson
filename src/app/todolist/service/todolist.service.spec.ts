@@ -7,7 +7,7 @@ import { todolistReducer } from '../state/todolist.reducers';
 
 describe('TodolistService', () => {
   let service: TodolistService;
-  TodolistService;
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [{ provide: TodolistService }],
