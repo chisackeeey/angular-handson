@@ -42,7 +42,7 @@ describe('TodolistService', () => {
       },
     ];
     service.addTodo('add');
-    service.toggleComplete(1);
+    service.toggleComplete(0);
     service.getTodolist().subscribe((todolist) => {
       expect(todolist).toEqual(expected);
     });
