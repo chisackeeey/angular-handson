@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TranslateService } from './../translate.service';
+import { Observable } from 'rxjs';
+import { first } from 'rxjs/operators';
+import { TranslateService } from './service/translate.service';
 
 @Component({
   selector: 'app-translate',
@@ -7,28 +9,24 @@ import { TranslateService } from './../translate.service';
   styleUrls: ['./translate.component.css'],
 })
 export class TranslateComponent implements OnInit {
-  result = '';
-  loading = false;
+  result$: Observable<string>;
+  loading$: Observable<boolean>;
 
   onClickTranslate(text: string) {
-    this.loading = true;
-    this.translateService.translateJaToEn(text).subscribe(
-      (result) => (this.result = result),
-      (error) => alert(error.statusText),
-      () => (this.loading = false)
-    );
+    console.log('component' + text);
+    this.service.translateJaToEn(text);
   }
 
-  onClickRetranslate(text: string) {
-    this.loading = true;
-    this.translateService.translateEnToJa(text).subscribe(
-      (result) => (this.result = result),
-      (error) => alert(error.statusText),
-      () => (this.loading = false)
-    );
+  onClickRetranslate() {
+    this.result$.pipe(first()).subscribe((result: string) => {
+      this.service.translateEnToJa(result);
+    });
   }
 
-  constructor(private translateService: TranslateService) {}
+  constructor(private service: TranslateService) {
+    this.result$ = this.service.getResult();
+    this.loading$ = this.service.getLoading();
+  }
 
   ngOnInit(): void {}
 }

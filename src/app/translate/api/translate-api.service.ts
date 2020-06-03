@@ -1,24 +1,24 @@
-import { catchError } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root',
-})
-export class TranslateService {
-  private url =
+@Injectable({ providedIn: 'root' })
+export class TranslateApiService {
+  private baseUrl =
     'https://script.google.com/macros/s/AKfycby3NwZhozMWbkS8evh2t3dvfJgKxCBdchI0Xdr31L_BoUb7uqyE/exec';
 
   constructor(private http: HttpClient) {}
 
   translateJaToEn(text: string) {
-    return this.http.get(`${this.url}?text=${text}&source=ja&target=en`, {
+    console.log('api' + text);
+    return this.http.get(`${this.baseUrl}?text=${text}&source=ja&target=en`, {
       responseType: 'text',
     });
   }
 
   translateEnToJa(text: string) {
-    return this.http.get(`${this.url}?text=${text}&source=en&target=ja`, {
+    console.log('api' + text);
+    return this.http.get(`${this.baseUrl}?text=${text}&source=en&target=ja`, {
       responseType: 'text',
     });
   }
