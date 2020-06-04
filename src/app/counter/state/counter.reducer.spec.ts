@@ -12,25 +12,25 @@ beforeEach(() => {
 
 describe('CountReducer', () => {
   it('should increment count', () => {
-    const initState = initialState;
-    const counterAction = CounterActions.countUp;
-    const newState = reducer(initState, counterAction);
+    const state = initialState;
+    const action = CounterActions.countUp;
+    const newState = reducer(state, action);
 
     expect(newState.count).toBe(3);
   });
 
   it('should decrement count', () => {
-    const initState = initialState;
-    const counterAction = CounterActions.countDown;
-    const newState = reducer(initState, counterAction);
+    const state = initialState;
+    const action = CounterActions.countDown;
+    const newState = reducer(state, action);
 
     expect(newState.count).toBe(1);
   });
 
   it('should square count', () => {
-    const initState = initialState;
-    const counterAction = CounterActions.countPower;
-    const newState = reducer(initState, counterAction);
+    const state = initialState;
+    const action = CounterActions.countPower;
+    const newState = reducer(state, action);
 
     expect(newState.count).toBe(4);
   });
