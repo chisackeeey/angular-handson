@@ -3,7 +3,7 @@ import { StoreModule } from '@ngrx/store';
 
 import { TodolistService } from './todolist.service';
 import { todolistFeatureName } from '../state/todolist.state';
-import { todolistReducer } from '../state/todolist.reducers';
+import { reducer } from '../state/todolist.reducers';
 
 describe('TodolistService', () => {
   let service: TodolistService;
@@ -13,7 +13,7 @@ describe('TodolistService', () => {
       providers: [{ provide: TodolistService }],
       imports: [
         StoreModule.forRoot({}),
-        StoreModule.forFeature(todolistFeatureName, todolistReducer),
+        StoreModule.forFeature(todolistFeatureName, reducer),
       ],
     });
     service = TestBed.inject(TodolistService);

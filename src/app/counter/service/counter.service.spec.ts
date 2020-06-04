@@ -4,7 +4,7 @@ import { StoreModule } from '@ngrx/store';
 
 import { CounterService } from './counter.service';
 import { counterFeatureName } from '../state/counter.state';
-import { counterReducer } from '../state/counter.reducer';
+import { reducer } from '../state/counter.reducer';
 
 describe('CounterService', () => {
   let service: CounterService;
@@ -14,7 +14,7 @@ describe('CounterService', () => {
       providers: [{ provide: CounterService }],
       imports: [
         StoreModule.forRoot({}),
-        StoreModule.forFeature(counterFeatureName, counterReducer),
+        StoreModule.forFeature(counterFeatureName, reducer),
       ],
     });
     service = TestBed.inject(CounterService);
