@@ -2,7 +2,7 @@ import { createReducer, on, Action } from '@ngrx/store';
 import { TodolistState, initialState } from './todolist.state';
 import * as TodolistActions from './todolist.actions';
 
-export const reducer = createReducer(
+export const todolistReducer = createReducer(
   initialState,
   on(TodolistActions.addTodo, (state, { title }) => ({
     ...state,
@@ -23,6 +23,6 @@ export const reducer = createReducer(
   }))
 );
 
-export function todolistReducer(state: TodolistState, action: Action) {
-  return reducer(state, action);
+export function reducer(state: TodolistState, action: Action) {
+  return todolistReducer(state, action);
 }

@@ -2,7 +2,7 @@ import { createReducer, on, Action } from '@ngrx/store';
 import { CounterState, initialState } from './counter.state';
 import * as CounterActions from './counter.actions';
 
-export const reducer = createReducer(
+export const counterReducer = createReducer(
   initialState,
   on(CounterActions.countUp, (state) => ({ ...state, count: state.count + 1 })),
   on(CounterActions.countDown, (state) => ({
@@ -15,6 +15,6 @@ export const reducer = createReducer(
   }))
 );
 
-export function counterReducer(state: CounterState, action: Action) {
-  return reducer(state, action);
+export function reducer(state: CounterState, action: Action) {
+  return counterReducer(state, action);
 }
