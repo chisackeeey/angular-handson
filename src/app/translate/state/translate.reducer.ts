@@ -2,7 +2,7 @@ import { createReducer, on, Action } from '@ngrx/store';
 import { TranslateState, initialState } from './translate.state';
 import * as TranslateActions from './translate.actions';
 
-export const reducer = createReducer(
+export const translateReducer = createReducer(
   initialState,
   on(TranslateActions.translateJaToEn, (state) => {
     return { ...state, loading: true };
@@ -18,6 +18,6 @@ export const reducer = createReducer(
   })
 );
 
-export function translateReducer(state: TranslateState, action: Action) {
-  return reducer(state, action);
+export function reducer(state: TranslateState, action: Action) {
+  return translateReducer(state, action);
 }
